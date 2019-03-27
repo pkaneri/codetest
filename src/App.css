@@ -1,0 +1,123 @@
+@font-face {
+  font-family: 'Museo';
+  src: local('Museo500'), url(./fonts/Museo500.otf) format('otf');
+  src: local('Museo700'), url(./fonts/Museo700.otf) format('otf');
+}
+
+.listings-media-grid {
+  display: grid;
+  height: 500px;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  border-radius: 25px;
+  grid-template-areas:
+    "photo    photo photo photo   photo photo "
+    "photo photo photo photo   photo photo "
+    "photo photo photo photo photo photo ";
+}
+
+.listing-grid {
+  display: grid;
+  padding: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(500px,1fr));
+  grid-gap: 1rem;
+}
+
+.roommates-grid {
+  height: 100%;
+  width: 100%;
+  border-radius: 25px;
+  list-style: none;
+  background: #1a1a1a;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.roommates-images {
+  border-radius: 25px;
+  grid-area: photo;
+}
+
+.roommates-images:hover {
+  box-shadow: 3px 3px 3px;
+}
+
+.listings-media-img {
+  border-radius: 25px;
+  grid-area: photo;
+}
+.listings-media-img > img:hover {
+  box-shadow: 5px 5px 5px;
+  color:#aaaaaa;
+}
+
+.listings-media-img > img {
+  background-position: center;
+  object-fit: cover;
+  border-radius: 25px;
+  width: 100%;
+  max-height: 100%;
+  min-height: 100%;
+  min-width: 100%;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+}
+
+.back-button-container {
+  position: relative;
+grid-row-start:    3;
+grid-row-end:      4;
+grid-column-start: 1;
+grid-column-end:   2;
+  z-index: 2;
+}
+
+.back-button {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    border: none;
+    background: none;
+    color: white;
+    background-color: #df2020;
+    height: 60px;
+    width: 90px;
+    border-top-right-radius: 15px;
+      font-size: xx-large;
+}
+
+.back-button:hover {
+  background-color: #d63f3f;
+}
+
+.roommate-name {
+  font-family: "Museo500", "Museo700";
+  margin-Top: 10px;
+  display: block;
+  color: white;
+}
+
+.roommate-name:hover {
+  color: #df2020;
+}
+
+.roommate-avatar:hover {
+  color: pink;
+  background-color: pink;
+}
+
+.roommates-preview {
+  margin-top: 30px;
+  margin-right: 30px;
+  border-radius: 25px;
+grid-row-start:    3;
+grid-row-end:      4;
+grid-column-start: 3;
+grid-column-end:   7;
+
+  z-index: 2;
+}
