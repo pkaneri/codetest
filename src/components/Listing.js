@@ -7,7 +7,7 @@ const Listing = (props) => {
   const {data} = props;
 
   return (
-     <div>
+     <div className='listing'>
      <ListingMedia featuredPhoto={data.featuredPhoto} photos={data.photos} roommates={data.roommates} /> 
      <ListingInfo area={data.area} transport={data.transport} rentPerMonth={data.rentPerMonth} roomTitle={data.roomTitle} /> 
     </div>

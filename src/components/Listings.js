@@ -30,7 +30,7 @@ let {listings} = props.listings;
 
 if (listings) {
 
-    return  <div className="listing-grid"> { listings.map(listing => { 
+    return  <div className="listings"> { listings.map(listing => { 
         return ( <Listing key={listing.uuid} data={listing}/>)
       })
     }

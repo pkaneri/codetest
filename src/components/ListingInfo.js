@@ -2,6 +2,7 @@ import React from 'react'
 import overgroundIcon from '../icons/overground-icon.svg';
 import undergroundIcon from '../icons/underground-icon.svg';
 import walkingIcon from '../icons/walk-icon--black.svg';
+import VertDivider from './VertDivider';
 
 const transportIcon = (type) => {
 
@@ -25,20 +26,35 @@ const ListingInfo = (props) => {
   // console.log(props);
 
   return (
-    <div data-testid="listing-info" style={{display: 'block', textAlign:'left', marginTop:'15px'}}>
-      <p ><b data-testid="rent-per-month">£{rentPerMonth}</b>
-      {"   |   "}
+    <div className='listing-info' data-testid="listing-info">
+      <span style={{verticalAlign: 'middle'}}>
+      <b data-testid="rent-per-month">£{rentPerMonth}</b>
+      &nbsp;
+      &nbsp;
+      <VertDivider/>
+      &nbsp;
+      &nbsp;
       <b data-testid="room-title">{roomTitle}</b>
+      </span>
       <br />
-        {area} {"   |   "}
-        {" "} <img src={walkingIcon} alt="Walking Icon" />
-        <span>{" "}</span>
+      <span style={{verticalAlign: 'middle'}}>
+        {area} 
+        &nbsp;
+        &nbsp;
+        <VertDivider/>
+        &nbsp;
+        &nbsp;
+        <img src={walkingIcon} alt="Walking Icon" />
+        &nbsp;
+        &nbsp;
         {transport.distance.time}
-        {" "}
+        &nbsp;
+        &nbsp;
         {transportIcon(transport.type)}
-        {" "}
+        &nbsp;
+        &nbsp;
         {transport.name}
-        </p>
+        </span>
     </div>
   )
 }

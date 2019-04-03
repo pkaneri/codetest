@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 import RoommatesPreview from './RoommatesPreview';
 import Roommates from './Roommates';
 import {Link} from 'react-router-dom';
-import BackButton from './BackButton';
 
 function getFeaturedPhoto(featuredPhotoId, photos) {
 
@@ -13,42 +12,53 @@ function getFeaturedPhoto(featuredPhotoId, photos) {
         photoUrl = photo.cdnUrl
       }
     })
-
     return photoUrl;
-
 } 
 
 const ListingMedia = (props) => {
 
     const { roommates } = props;
 
-    console.log(roommates);
-
     const [roommateClicked, setRoommateClicked] = useState(false);
+
+    const [firstClick, setFirstClick] = useState(false);
+
+    if (!firstClick) {
+      if (roommateClicked) {
+        setFirstClick(true);
+      }
+    }
 
   function roommateClickListener() {
     setRoommateClicked(!roommateClicked)
   }  
 
-  return ( <div className="listings-media-grid">
+  return ( <div className='listing-media-container'>
+    <div className="listing-media-grid">
 
-    {roommateClicked ?
+    { firstClick ? 
     <>
-      <div className="roommates-images">
-        <Roommates roommates={roommates}/>
-      </div>
-      <BackButton onPress={roommateClickListener}/>
-    </>
-    :
-    <>
-    <Link className="listings-media-img" to={'/listings/test'}>
+    <div className={roommateClicked ? "roommates-images" : "roommates-images-exit"} >
+      <Roommates onPress={roommateClickListener} roommates={roommates} />
+    </div>
+    <Link className={"listings-media-img"} to={'/listings/test'}>
       <img src={getFeaturedPhoto(props.featuredPhoto, props.photos)} alt="Room" />  
     </Link>
-    <div className="roommates-preview">
+    <div className={"roommates-preview-container"}>
       <RoommatesPreview onPress={roommateClickListener} roommates={roommates}/>
     </div>
     </>
+    : 
+    <>
+    <Link className="listings-media-img" to={'/listings/test'}>
+    <img src={getFeaturedPhoto(props.featuredPhoto, props.photos)} alt="Room" />  
+    </Link>
+    <div className="roommates-preview-container">
+    <RoommatesPreview onPress={roommateClickListener} roommates={roommates}/>
+    </div>
+    </>
     }
+  </div>
   </div>
   )
 }
